@@ -1,0 +1,95 @@
+# 0304 스터디
+
+
+//ACM 호텔
+/*
+int t = int.Parse(Console.ReadLine());
+for (int i = 0; i < t; i++)
+{
+    string[] a = Console.ReadLine().Split();
+    int H = int.Parse(a[0]); //층
+    int W = int.Parse(a[1]); //층별 방수
+    int N = int.Parse(a[2]); //n번째손님
+    int floor = (N % H == 0) ? H : N % H;
+    int room = (N % H == 0) ? N / H : N / H + 1;
+    Console.WriteLine($"{floor}{room.ToString("D2")}");
+}
+int t = int.Parse(Console.ReadLine());
+int floor = 0;
+int room = 0;
+for (int i = 0; i < t; i++)
+{
+    string[] a = Console.ReadLine().Split();
+    int H = int.Parse(a[0]); //층
+    int W = int.Parse(a[1]); //층별 방수
+    int N = int.Parse(a[2]); //n번째손님
+    if (N % H == 0)
+    {
+        floor = H;
+        room = N / H;
+    }
+    else
+    {
+        floor = N % H;
+        room = N / H + 1;
+    }
+    Console.WriteLine($"{floor}{room.ToString("D2")}");
+}
+
+입력
+2
+6 12 10
+
+출력
+402
+
+승배님코드
+static void Main()
+{
+    int t;
+    int h, w, n;
+
+    t = int.Parse(Console.ReadLine());
+    for (int i = 0; i<t; i++)
+    {
+        string[] _ = Console.ReadLine().Split(' ');
+        h = int.Parse(_[0]); w = int.Parse(_[1]); n = int.Parse(_[2]);
+        int XX = (int)Math.Ceiling((double)n/h); int YY = n-h*(XX-1);
+        string room = YY + XX.ToString("D2");
+        Console.WriteLine(room);
+    }
+} 
+
+승민님 코드(c++버전)
+#include <iostream> 
+using namespace std;
+
+int main() {
+    int T, H, W, N;
+    cin >> T;
+    for (int i = 0; i < T; i++)
+    {
+        cin >> H >> W >> N;             
+        cout << ((N - 1) / H) + ((N - 1) % H) * 100 + 101 << "\n"; 
+    } 
+} 
+(c# 버전)
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int T = int.Parse(Console.ReadLine()); // 테스트 케이스 개수 입력
+        for (int i = 0; i < T; i++)
+        {
+            string[] input = Console.ReadLine().Split();
+            int H = int.Parse(input[0]);
+            int W = int.Parse(input[1]);
+            int N = int.Parse(input[2]);
+
+            int result = ((N - 1) / H) + ((N - 1) % H) * 100 + 101;
+            Console.WriteLine(result);
+        }
+    }
+}
